@@ -1,6 +1,144 @@
+@import 'variables';
+@import 'mixins';
+
 body {
-  margin: 0 auto;
-  background-color: #f5f5f5;
-  box-sizing: border-box;
-  
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+    font-family: $fuente_principal;
+}
+
+html {
+    @include box-sizing(border-box);
+}
+*,
+*:after,
+*:before {
+  @include box-sizing(inherit);
+}
+
+.contenedor {
+    max-width:1100px;
+    width:90%;
+    margin:0 auto; 
+}
+
+.hero {
+    background-image: url(../images/cabo_view.jpeg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 24rem;
+    color:$blanco;
+    align-items: center;
+    display: flex;
+    .contenido-hero {
+        h2 {
+            font-family: $fuente_principal;
+            font-weight: 400;
+            font-size: 2.6rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+        form {
+            position: relative;
+           
+            @include tablet() {
+                width:40%;
+            }
+            input[type="submit"] {
+                position: absolute;
+                right: 0;
+                top:.1rem;
+                text-decoration: none;
+                border:none;
+                text-indent: -9999px;
+                display: block;
+                background-image: url(../images/lupa.png);
+                background-repeat: no-repeat;
+                background-position: center center;
+                width: calc( 3rem - 10px);
+                height: calc( 3rem - 10px);
+            }
+            input[type="text"] {
+                width: 100%;
+                height: 3rem;
+            }
+        }
+    }
+}
+
+/** Cards **/
+.cursos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    .curso {
+        .imagen-curso {
+            width: 100%;
+        }
+        flex: 0 1 calc(50% - 1rem);
+        @include tablet() {
+            flex: 0 1 calc(33% - 1rem);
+        }
+        @include desktop() {
+            flex: 0 1 calc(25% - 1rem);
+        }
+        background-color: $blanco;
+        margin-bottom: 1rem;
+        border: 1px solid #e1e1e1;
+        .info-curso {
+            padding: 1rem 1rem;
+            h4 {
+                margin:0;
+                font-size: 1.2rem;
+            }
+            .boton {
+                @include boton($primario);
+            }
+            .precio {
+                display: flex;
+                justify-content: space-between;
+                .oferta {
+                    text-decoration: line-through;
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    border-top: 1px solid #e1e1e1;
+    margin-top: 1rem;
+    padding-top: 2rem;
+
+    .contenedor-footer {
+        display: flex;
+        flex-direction: column;
+        @include telefono() {
+            flex-direction: row;
+        }
+
+    }
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    @include telefono() {
+        flex: 1;
+    }
+    @include desktop(){
+        flex: 0 1 calc(30% - 1rem);
+    }
+    a {
+        color: black;
+        text-decoration: none;
+        margin-bottom: .4rem;
+    }
 }
