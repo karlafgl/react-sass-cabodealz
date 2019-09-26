@@ -9,43 +9,31 @@ const timeConvert = (n) => {
     return `${rhours}:${rminutes} hrs`
 }
 
+const truncate = (str, no_words) => {
+    let newText = str.split(" ").splice(0,no_words).join(" ");
+    return `${newText}...`
+}
+
 const Card = ({name, image, price, duration, description}) => {
     return(
-      <div className="curso">
-        <img className="imagen-curso" src={image}/>
-        <div className="info-curso">
-            <h4>{name}</h4>
-            <p>{description}</p>
-            <div className="precio">
-                <p className="regular">{price}</p>
-                <p className="oferta">$15</p>
-            </div>
-            <a href="#" className="boton" data-id="1">Agregar Al Carrito</a>
+      <div className="box zone">
+        <div className="card-header">
+            <p className="activity-title">{name}</p>
+            <button className="carrito"><i className="fas fa-shopping-cart"></i></button>
         </div>
+        <img src={image}/>
+        <div className="price">
+            <p>Price:</p>
+            <p>{`$${price}.00`}</p>  
+        </div>
+        <div className="description">
+            <p>{truncate(description, 30)}</p>
+            <a href="" className="read-more">Read more</a>
+            <p><i className="far fa-2x fa-clock"></i>{timeConvert(duration)}</p>
+            <a href="#" className="boton" data-id="1">Book Now</a>
+        </div>
+        
       </div>
-
-        // <div className="br2 fl w-100 ba pa2 ma2 dark-gray b--black-10 mv4 mw5 grow br3 shadow-4">
-        //     <div className="mb3" >
-        //         <img src={image} className="db w-100 br2 br--top" alt="" height="180rem"/>
-        //     </div>
-        //     <div className="w-100 mt1">
-        //         <div className="dtc">
-        //             <p className="b f5 f4-ns mv0">{name}</p>
-        //         </div>
-        //         <hr className="mw5 b--black-10 bb bw1 center"/>
-        //         <p className="b tr f5 mv0">{`$${price}.00`}</p>
-        //         <ul className="pl0">
-        //             <li className="list"><i className="far fa-2x fa-clock pa2"></i>{timeConvert(duration)}</li>
-        //         </ul>
-        //         <p className="f6 lh-copy measure mt2 mid-gray">{description}</p>
-        //         <div className="btn-holder">
-        //             <button className="f6 w-100 link dim ph3 pv2 mb2 dib white bg-light-purple mt3 pointer">Book Now</button>
-        //         </div>
-        //     </div>
-        // </div>
-      
-
- 
     )
 }
 

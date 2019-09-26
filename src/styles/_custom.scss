@@ -69,76 +69,86 @@ html {
     }
 }
 
-/** Cards **/
-.cursos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    .curso {
-        .imagen-curso {
-            width: 100%;
-        }
-        flex: 0 1 calc(50% - 1rem);
-        @include tablet() {
-            flex: 0 1 calc(33% - 1rem);
-        }
-        @include desktop() {
-            flex: 0 1 calc(25% - 1rem);
-        }
-        background-color: $blanco;
-        margin-bottom: 1rem;
-        border: 1px solid #e1e1e1;
-        .info-curso {
-            padding: 1rem 1rem;
-            h4 {
-                margin:0;
-                font-size: 1.2rem;
-            }
-            .boton {
-                @include boton($primario);
-            }
-            .precio {
-                display: flex;
-                justify-content: space-between;
-                .oferta {
-                    text-decoration: line-through;
-                    font-size: 1.4rem;
-                    font-weight: 700;
-                }
-            }
-        }
+/***********************************************************************
+ *  Grid Cards
+ **********************************************************************/
+ .grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 0.7rem;
+    .box {
+        padding: 1rem;
+        margin: 1em;
+       
+    }
+}
+.zone {
+    color:black;
+    // font-size:2em;
+    border-radius:4px;
+    border:1px solid #bbb;
+    transition: all 0.3s linear;
+}
+
+// .zone:hover {
+//     -webkit-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+//     -moz-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+//     -o-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+//     box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+// }
+
+.card-header {
+    position: relative;
+
+    .activity-title {
+        margin:0 0 1rem 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+    
+    .carrito {
+        position: absolute;
+        z-index: 1;
+        right: 10px;
+        top: 10px;
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .carrito:hover{
+        -webkit-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+        -moz-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+        -o-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+        box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
     }
 }
 
-.footer {
-    border-top: 1px solid #e1e1e1;
-    margin-top: 1rem;
-    padding-top: 2rem;
+.box > img {
+    width: 100%;
+    height: 280px; //<--optional
+}
 
-    .contenedor-footer {
+.price {
+    display: flex;
+    justify-content: space-between; 
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.description {
+    .read-more {
         display: flex;
-        flex-direction: column;
-        @include telefono() {
-            flex-direction: row;
-        }
-
+        justify-content: flex-end;
+        
+    }
+    .fa-clock {
+        margin-right: .7rem;
     }
 }
 
-.menu {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    @include telefono() {
-        flex: 1;
-    }
-    @include desktop(){
-        flex: 0 1 calc(30% - 1rem);
-    }
-    a {
-        color: black;
-        text-decoration: none;
-        margin-bottom: .4rem;
-    }
+.boton {
+    @include boton($primario);
 }
+
