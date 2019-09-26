@@ -4,7 +4,6 @@ import Card from './Card';
 
 const ArrayCards = ({dataActivity}) => {
  return(
-    //  class = cursos contenedor
      <div className="zone grid-wrapper">
      {
         dataActivity.map((data, i)=> {
